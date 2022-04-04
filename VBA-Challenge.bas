@@ -15,7 +15,28 @@ Sub VBA_Challenge()
     
 'P1: Sort throught the tickers - put them in "Ticker" coulmn'
 
-    Dim
+    Dim Total As Double
+    Dim Change As Double
+    Dim Percent As Double
+    Dim Start As Long
+    Dim Finish As Long
+    
+    
+    lastrow = Cells(Rows.Count, 1).End(x1Up).Row
+    Total = 0
+    output = 2
+    Start = 2
+    
+    For i = 2 To lastrow
+    
+'Condense Titckers to single cell'
+    If Cells(i, 1).Value <> Cells(i + 1, 1).Value Then
+    Cells(output, 9).Value -Cells(i, 1).Value
+    
+    
+    
+    
+    
 
 
 End Sub
