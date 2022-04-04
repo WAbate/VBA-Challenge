@@ -22,23 +22,39 @@ Sub VBA_Challenge()
     Dim Finish As Long
     
     
-    lastrow = Cells(Rows.Count, 1).End(x1Up).Row
-    Total = 0
-    output = 2
-    Start = 2
-    
-    For i = 2 To lastrow
-    
 'Condense Titckers to single cell'
     If Cells(i, 1).Value <> Cells(i + 1, 1).Value Then
-    Cells(output, 9).Value -Cells(i, 1).Value
+    Cells(output, 9).Value = Cells(i, 1).Value
     
+'Yearly change'
+    Change = Cells(i, 6) - Cells(Start, 3)
+    Percent = Cells(output, 10).Value / Cells(Start, 3).Value
     
+'Yearly Change in Percent'
+    Cells(output, 11).Value = Percent
+    Cells(output, 11).NumberFormat = "00.00%"
+    Start = i + 1
     
+'Output Volume'
+    Cells(output, 12).Value = Total
+    output = output + 1
+    Total = 0
+Else
+    Total = Total + Cells(i, 7).Value
     
-    
-
-
+End If
+        Next i
+        For i = 2 To 290
+                If (Cells(i, 10).Value > 0) Then
+                Cells(i, 10).Interior.ColorIndex = 4
+                Else
+                    Cells(i, 10).Interior.ColorIndex = 3
+                    
+        End If
+        Next i
+        
+                
+        
 End Sub
 
 
