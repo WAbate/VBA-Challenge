@@ -37,12 +37,13 @@ Sub VBA_Challenge()
     
 'Yearly change'
     Change = Cells(i, 6) - Cells(Start, 3)
-    Percent = Cells(Output, 10).Value / Cells(Start, 3).Value
+    Cells(Output, 10).Value = Change
     
 'Yearly Change in Percent'
-    Cells(Output, 11).Value = Percent
-    Cells(Output, 11).NumberFormat = "00.00%"
+    Percent = Cells(Output, 10).Value / Cells(Start, 3).Value
+    Cells(Output, 11).NumberFormat = "0.00%"
     Start = i + 1
+    Cells(Output, 11).Value = Percent
     
 'Output Volume'
     Cells(Output, 12).Value = Total
