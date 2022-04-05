@@ -1,4 +1,4 @@
-Attribute VB_Name = "Module1"
+Attribute VB_Name = "Module11"
 'Write a loop that will:'
 'output the ticker'
 'the yearly change(Beg open to End close)'
@@ -32,40 +32,44 @@ Sub VBA_Challenge()
     
     
 'Condense Titckers to single cell'
-    If Cells(i, 1).Value <> Cells(i + 1, 1).Value Then
-    Cells(Output, 9).Value = Cells(i, 1).Value
+            If Cells(i, 1).Value <> Cells(i + 1, 1).Value Then
+                Cells(Output, 9).Value = Cells(i, 1).Value
     
 'Yearly change'
-    Change = Cells(i, 6) - Cells(Start, 3)
-    Cells(Output, 10).Value = Change
+                Change = Cells(i, 6) - Cells(Start, 3)
+                Cells(Output, 10).Value = Change
     
 'Yearly Change in Percent'
-    Percent = Cells(Output, 10).Value / Cells(Start, 3).Value
-    Cells(Output, 11).NumberFormat = "0.00%"
-    Start = i + 1
-    Cells(Output, 11).Value = Percent
+            If Cells(Start, 3).Value = 0 Then
+                    Percent = 0
+            Else
+                    Percent = Cells(Output, 10).Value / Cells(Start, 3).Value
+                    Cells(Output, 11).NumberFormat = "0.00%"
+                
+            End If
+            
+                Start = i + 1
+                Cells(Output, 11).Value = Percent
     
 'Output Volume'
-    Cells(Output, 12).Value = Total
-    Output = Output + 1
-    Total = 0
-Else
-    Total = Total + Cells(i, 7).Value
+                Cells(Output, 12).Value = Total
+                Output = Output + 1
+                Total = 0
+            Else
+                Total = Total + Cells(i, 7).Value
     
-End If
-        Next i
-        For i = 2 To 290
-                If (Cells(i, 10).Value > 0) Then
-                Cells(i, 10).Interior.ColorIndex = 4
+    End If
+            Next i
+        
+                  For i = 2 To 290
+                        If (Cells(i, 10).Value > 0) Then
+                        Cells(i, 10).Interior.ColorIndex = 4
                 Else
                     Cells(i, 10).Interior.ColorIndex = 3
                     
         End If
-        Next i
-        
-                
+            Next i
+    
+       
         
 End Sub
-
-
-
